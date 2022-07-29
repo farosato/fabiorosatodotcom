@@ -1,12 +1,43 @@
 <script>
+	import { onMount } from 'svelte';
+
 	let isNewsletterOpen = true;
+	let isSubscribed = 'no';
+	let error = null;
+	function getSubscribedStatus() {
+		return localStorage.getItem('isSubscribed');
+	}
+	function setSubscribedStatus() {
+		isSubscribed = 'subscribed';
+		localStorage.setItem('isSubscribed', isSubscribed);
+	}
+	onMount(() => {
+		isSubscribed = getSubscribedStatus();
+		if (isSubscribed === 'subscribed') isNewsletterOpen = false;
+	});
 	function toggleNewsletter() {
 		isNewsletterOpen = !isNewsletterOpen;
 	}
-	function onSubmit() {
-		alert(
-			'This newsletter section is not yet implemented! if you are seeing this outside of swyxkit then go remind the site author to update Newsletter.svelte.'
-		);
+	async function onSubmit(event) {
+		error = null;
+		const formData = new FormData(event.target);
+		const body = {
+			email: formData.get('email')
+		};
+		const response = await fetch('/api/subscribe', {
+			method: 'post',
+			body: JSON.stringify(body),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		if (response.ok) {
+			setSubscribedStatus();
+			toggleNewsletter();
+		} else {
+			const responseData = await response.json();
+			error = responseData.error.email || responseData.error;
+		}
 	}
 </script>
 
@@ -15,7 +46,11 @@
 		class="my-4 w-full border-y border-blue-200 bg-blue-50 p-6 dark:border-gray-600 dark:bg-gray-800 sm:rounded sm:border-x"
 	>
 		<div class="flex items-center justify-between space-x-4 text-gray-900 dark:text-gray-100">
-			<p class="text-lg font-bold md:text-xl">Subscribe to the newsletter</p>
+			{#if isSubscribed === 'subscribed'}
+				<p class="md:text-xl">Thanks for subscribing to the newsletter!</p>
+			{:else}
+				<p class="text-lg font-bold md:text-xl">Subscribe to the newsletter</p>
+			{/if}
 
 			<button
 				aria-label="Toggle Newsletter CTA"
@@ -53,26 +88,29 @@
 		</div>
 		{#if isNewsletterOpen}
 			<p class="my-1 text-gray-800 dark:text-gray-200">
-				Get emails from me about <span class="font-bold"
-					>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, ducimus.</span
-				>.
+				Want <span class="font-bold">exclusive</span> early access to my best content to help you live
+				a happier, healthier, and more productive life?
 			</p>
-			<form class="relative my-4" on:submit={onSubmit}>
+
+			<form class="relative my-4" on:submit|preventDefault={onSubmit}>
 				<input
 					type="email"
+					name="email"
 					aria-label="Email for newsletter"
-					placeholder="tim@apple.com"
+					placeholder="your@email.com"
 					autocomplete="email"
 					required={true}
-					class="mt-1 block w-full rounded-md border-gray-300 bg-white px-4 py-2 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
-				/><button
-					class="absolute right-1 top-1 flex h-8 w-28 items-center justify-center rounded bg-gray-100 px-4 pt-1 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+					class="block w-full rounded-md border-gray-300 bg-white px-4 py-2 pr-32 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"
+				/>
+				<button
+					class="absolute right-0 top-0 flex min-h-full items-center justify-center rounded bg-zinc-100 px-4 font-medium text-gray-900 hover:text-amber-600 dark:bg-zinc-700 dark:text-gray-100 hover:dark:text-amber-500"
 					type="submit">Subscribe</button
 				>
 			</form>
-			<p class="text-sm text-gray-800 dark:text-gray-200">
-				3 subscribers including my Mom – <a href="/#newsletter">23 issues</a>
-			</p>
+			{#if error}
+				<p class="my-3 text-red-600 dark:text-red-600">{error}</p>
+			{/if}
+			<p class="text-sm text-gray-800 dark:text-gray-200">1000+ subscribers including my mom</p>
 		{/if}
 	</div>
 </section>
