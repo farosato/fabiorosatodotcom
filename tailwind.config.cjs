@@ -33,14 +33,6 @@ module.exports = {
 							borderWidth: '2px',
 							borderColor: 'rgba(0,0,0,0.1)'
 						},
-						'a:hover': {
-							color: '#31cdce !important',
-							textDecoration: 'underline !important'
-						},
-						a: {
-							color: '#3182ce',
-							textDecoration: 'none'
-						},
 						'a code': {
 							color: 'unset'
 						},
