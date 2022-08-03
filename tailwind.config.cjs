@@ -37,7 +37,11 @@ module.exports = {
 							color: 'unset'
 						},
 						'li, ul, ol': {
-							margin: 0
+							marginTop: 10,
+							marginBottom: 10
+						},
+						'p + ul, p + ol': {
+							marginTop: -10
 						},
 						'li > img': {
 							margin: 0,
