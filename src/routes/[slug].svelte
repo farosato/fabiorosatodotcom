@@ -52,12 +52,12 @@
 	<link rel="canonical" href={canonical} />
 	<meta property="og:url" content={canonical} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={json.title} />
+	<meta property="og:title" content={json.title + (json.subtitle ? ': ' + json.subtitle : '')} />
 	<meta name="Description" content={json.description} />
 	<meta property="og:description" content={json.description} />
 	<meta name="twitter:card" content={json.image ? 'summary_large_image' : 'summary'} />
 	<meta name="twitter:creator" content={'@' + MY_TWITTER_HANDLE} />
-	<meta name="twitter:title" content={json.title} />
+	<meta name="twitter:title" content={json.title + (json.subtitle ? ': ' + json.subtitle : '')} />
 	<meta name="twitter:description" content={json.description} />
 	{#if json.image}
 		<meta property="og:image" content={json.image} />
@@ -71,6 +71,11 @@
 	<h1 class="mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl ">
 		{json.title}
 	</h1>
+	{#if json.subtitle}
+		<p class="mb-4 italic tracking-tight md:text-xl">
+			{json.subtitle}
+		</p>
+	{/if}
 	<div
 		class="bg mt-2 flex w-full justify-between sm:flex-col sm:items-start md:flex-row md:items-center"
 	>
