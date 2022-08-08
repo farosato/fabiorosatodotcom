@@ -52,6 +52,23 @@ module.exports = {
 						},
 						'ul > li::marker': {
 							color: 'var(--tw-prose-body)'
+						},
+						img: {
+							marginLeft: 'auto',
+							marginRight: 'auto'
+						},
+						// style img in table + caption hack
+						'thead img': {
+							marginTop: 0,
+							marginBottom: 8
+						},
+						// style image caption with ![image] + em hack
+						'p > img + em': {
+							display: 'block',
+							textAlign: 'center',
+							marginTop: '-1rem',
+							fontSize: '0.875rem' /* 14px */,
+							lineHeight: '1.25rem' /* 20px */
 						}
 					}
 				}
