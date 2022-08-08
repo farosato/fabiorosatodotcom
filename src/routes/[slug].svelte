@@ -66,7 +66,7 @@
 </svelte:head>
 
 <article
-	class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center px-4 sm:px-8"
+	class="mx-auto mb-8 flex w-full max-w-2xl flex-col items-start justify-center px-4 sm:px-8"
 >
 	<h1 class="mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl ">
 		{json.title}
@@ -88,12 +88,13 @@
 		class="-mx-4 my-2 flex h-1 w-[100vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
 	/>
 
-	<div class="prose mt-16 mb-32 w-full max-w-none dark:prose-invert">
+	<div class="prose mt-8 mb-8 w-full max-w-none dark:prose-invert">
 		{@html json.content}
 	</div>
 </article>
-<div class="mx-auto max-w-2xl">
-	<div class="prose mb-12 border-t border-b border-blue-800 p-4 dark:prose-invert">
+<div class="mx-auto max-w-prose">
+	<Newsletter />
+	<div class="prose mb-16 border-y border-blue-800 p-4 text-center dark:prose-invert sm:text-left">
 		{#if json.ghMetadata.reactions.total_count > 0}
 			Reactions: <Reactions
 				issueUrl={json.ghMetadata.issueUrl}
@@ -104,9 +105,7 @@
 			if you liked this post! 🧡
 		{/if}
 	</div>
-	<div class="mb-8">
+	<div class="prose mb-16">
 		<Comments ghMetadata={json.ghMetadata} />
 	</div>
-
-	<Newsletter />
 </div>
