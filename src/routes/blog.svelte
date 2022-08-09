@@ -1,7 +1,5 @@
 <script context="module">
-	import {
-		SITE_TITLE
-	} from '$lib/siteConfig';
+	import { SITE_TITLE } from '$lib/siteConfig';
 
 	// export const prerender = true; // turned off so it refreshes quickly
 	export async function load({ params, fetch }) {
@@ -59,14 +57,16 @@
 
 <svelte:window on:keyup={focusSearch} />
 
-<section class="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center px-4 sm:px-8">
+<section
+	class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center px-4 sm:px-8"
+>
 	<h1 class="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 		Blog
 	</h1>
 	<p class="mb-4 text-gray-600 dark:text-gray-400">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum sunt reprehenderit alias rerum
-		dolor impedit. In total, I've written {items.length} articles on my blog. Use the search below to
-		filter by title.
+		<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum sunt reprehenderit alias rerum
+		dolor impedit. In total, I've written {items.length} articles on my blog. -->
+		Use the search below to filter by title.
 	</p>
 	<div class="relative mb-4 w-full">
 		<input
@@ -90,7 +90,7 @@
 			/></svg
 		>
 	</div>
-	{#if !search}
+	<!-- {#if !search}
 		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 			Most Popular
 		</h3>
@@ -107,9 +107,9 @@
 		<h3 class="mt-8 mb-4 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 			All Posts
 		</h3>
-	{/if}
+	{/if} -->
 	{#if list.length}
-		<ul class="">
+		<ul class="w-full">
 			{#each list as item}
 				<li class="mb-8 text-lg">
 					<!-- <code class="mr-4">{item.data.date}</code> -->
@@ -139,7 +139,7 @@
 			No posts found for
 			<code>{search}</code>.
 		</div>
-		<button class="p-2 bg-slate-500" on:click={() => (search = '')}>Clear your search</button>
+		<button class="bg-slate-500 p-2" on:click={() => (search = '')}>Clear your search</button>
 	{:else}
 		<div class="prose dark:prose-invert">No blogposts found!</div>
 	{/if}
