@@ -93,6 +93,38 @@
 		class="-mx-4 my-2 flex h-1 w-[100vw] bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 sm:mx-0 sm:w-full"
 	/>
 
+	{#if json.frontmatter.disclosure}
+		<p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+			<a
+				aria-label="What is my disclosure policy?"
+				target="_blank"
+				title="What is my disclosure policy?"
+				rel="noopener"
+				href="{process.env.SITE_URL}/digital-garden-tos/#2-epistemic-disclosure"
+				color="blue"
+			>
+				<span class="relative font-bold"
+					>Disclosure<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="1em"
+						height="1em"
+						class="ml-1 inline"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="#999"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<circle cx="12" cy="12" r="10" />
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+						<line x1="12" y1="17" x2="12" y2="17" />
+					</svg></span
+				></a
+			>: {json.frontmatter.disclosure}
+		</p>
+	{/if}
+
 	<div class="prose mt-8 mb-8 w-full max-w-none dark:prose-invert">
 		{@html json.content}
 	</div>
