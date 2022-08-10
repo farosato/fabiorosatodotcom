@@ -68,7 +68,7 @@
 <article
 	class="mx-auto mb-8 flex w-full max-w-2xl flex-col items-start justify-center px-4 sm:px-8"
 >
-	<h1 class="mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl ">
+	<h1 class="mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 		{json.title}
 	</h1>
 	{#if json.subtitle}
@@ -125,11 +125,11 @@
 		</p>
 	{/if}
 
-	<div class="prose mt-8 mb-8 w-full max-w-none dark:prose-invert">
+	<div class="prose mt-8 mb-8 w-full dark:prose-invert">
 		{@html json.content}
 	</div>
 </article>
-<div class="mx-auto max-w-prose">
+<div class="mx-auto w-full max-w-2xl">
 	<Newsletter />
 	<div class="prose mb-16 border-y border-blue-800 p-4 text-center dark:prose-invert sm:text-left">
 		{#if json.ghMetadata.reactions.total_count > 0}
