@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://fabiorosatodotcom.netlify.app/';
+export const SITE_URL = 'https://fabiorosato.com/';
 export const APPROVED_POSTERS_GH_USERNAME = ['farosato'];
 export const GH_USER_REPO = 'farosato/fabiorosatodotcom'; // used for pulling github issues and offering comments
 export const REPO_URL = 'https://github.com/' + GH_USER_REPO;
