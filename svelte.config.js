@@ -27,7 +27,8 @@ const mdsvexConfig = {
 		[
 			rehypeAutolinkHeadings,
 			{
-				behavior: 'wrap'
+				behavior: 'wrap',
+				test: ['h2', 'h3', 'h4', 'h5', 'h6']
 			}
 		]
 	]

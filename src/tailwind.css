@@ -59,6 +59,10 @@ a,
 	@apply text-[#3182ce] hover:text-sky-400 hover:underline dark:text-yellow-400 dark:hover:text-yellow-200;
 }
 
+.prose h1 {
+	@apply mb-8 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl;
+}
+
 .prose h1 a,
 .prose h2 a,
 .prose h3 a,
