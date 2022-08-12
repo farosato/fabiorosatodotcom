@@ -3,7 +3,7 @@ export const APPROVED_POSTERS_GH_USERNAME = ['farosato'];
 export const GH_USER_REPO = 'farosato/fabiorosatodotcom'; // used for pulling github issues and offering comments
 export const REPO_URL = 'https://github.com/' + GH_USER_REPO;
 export const SITE_TITLE = 'Fabio Rosato';
-export const SITE_DESCRIPTION = "Fabio Rosato's site";
+export const SITE_DESCRIPTION = "Fabio Rosato's Digital Garden";
 
 const BIO =
 	'Visual Creator | Software Engineer | Project Management Professional • Following my curiosity and sharing what I learn along the way 🧭';
