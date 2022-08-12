@@ -24,12 +24,14 @@
 	<meta property="og:title" content={SITE_TITLE} />
 	<meta name="Description" content={SITE_DESCRIPTION} />
 	<meta property="og:description" content={SITE_DESCRIPTION} />
-	<meta property="og:image" content={DEFAULT_OG_IMAGE} />
+	<!-- @html trick to avoid ampersand escaping in the image URL -->
+	{@html `<meta property="og:image" content="${DEFAULT_OG_IMAGE}" />`}
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content={'@' + MY_TWITTER_HANDLE} />
 	<meta name="twitter:title" content={SITE_TITLE} />
 	<meta name="twitter:description" content={SITE_DESCRIPTION} />
-	<meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+	<!-- @html trick to avoid ampersand escaping in the image URL -->
+	{@html `<meta name="twitter:image" content="${DEFAULT_OG_IMAGE}" />`}
 </svelte:head>
 
 <div

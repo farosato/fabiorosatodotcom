@@ -4,8 +4,12 @@ export const GH_USER_REPO = 'farosato/fabiorosatodotcom'; // used for pulling gi
 export const REPO_URL = 'https://github.com/' + GH_USER_REPO;
 export const SITE_TITLE = 'Fabio Rosato';
 export const SITE_DESCRIPTION = "Fabio Rosato's site";
-export const DEFAULT_OG_IMAGE =
-	'https://pbs.twimg.com/profile_images/1443710468426768385/VFjYjDGu_400x400.jpg';
+
+const BIO =
+	'Visual Creator | Software Engineer | Project Management Professional • Following my curiosity and sharing what I learn along the way 🧭';
+export const DEFAULT_OG_IMAGE = `https://typeshare-opengraphs-three.vercel.app/Fabio%20Rosato.png?theme=light&bio=${encodeURI(
+	BIO
+)}&images=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1443710468426768385%2FVFjYjDGu.jpg`;
 export const MY_TWITTER_HANDLE = 'fab_rosato';
 
 // don't forget process.env.GH_TOKEN
