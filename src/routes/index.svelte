@@ -77,6 +77,11 @@
 				href="/digital-garden-tos"
 				stringData="Aug 2022"
 			/>
+			<FeatureCard
+				title="It's Always Day 1: Why I'm Starting the Ship 30 Challenge"
+				href="/ship30-day1"
+				stringData="Aug 2022"
+			/>
 		</div>
 		<a
 			class="mt-8 flex h-6 rounded-lg leading-7 text-gray-600 transition-all dark:text-gray-400 dark:hover:text-gray-200"
