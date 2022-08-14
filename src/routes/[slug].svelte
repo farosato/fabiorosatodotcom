@@ -1,7 +1,8 @@
 <script context="module">
 	// export const prerender = true; // you can uncomment to prerender as an optimization
 	export const hydrate = true;
-	import { MY_TWITTER_HANDLE, REPO_URL, SITE_URL } from '$lib/siteConfig';
+	import { MY_TWITTER_HANDLE, MY_TWITTER_PROFILE_PIC, REPO_URL, SITE_URL } from '$lib/siteConfig';
+	import { ogImageGenerator } from '$lib/utilities';
 	import Comments from '../components/Comments.svelte';
 	export async function load({ url, params, fetch }) {
 		const slug = params.slug;
@@ -47,17 +48,15 @@
 	$: canonical = SITE_URL + $page.url.pathname;
 	$: postImage =
 		json.image ??
-		`https://typeshare-opengraphs-three.vercel.app/${encodeURI(
-			json.title
-		)}.png?theme=light&type=post&date=${encodeURI(
-			new Date(json.date).toLocaleDateString('en-US', {
-				day: 'numeric',
-				month: 'short',
-				year: 'numeric'
-			})
-		)}&name=${encodeURI('Fabio Rosato')}&handle=${encodeURI(MY_TWITTER_HANDLE)}&bio=${encodeURI(
-			json.subtitle ?? json.description
-		)}&images=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1443710468426768385%2FVFjYjDGu.jpg`;
+		ogImageGenerator({
+			title: json.title,
+			type: 'post',
+			date: json.date,
+			name: 'Fabio Rosato',
+			handle: MY_TWITTER_HANDLE,
+			bio: json.subtitle ?? json.description,
+			image: MY_TWITTER_PROFILE_PIC
+		});
 </script>
 
 <svelte:head>
