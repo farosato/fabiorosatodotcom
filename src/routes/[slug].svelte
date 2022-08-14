@@ -45,6 +45,19 @@
 	export let json; // warning: if you try to destructure content here, make sure to make it reactive, or your page content will not update when your user navigates
 
 	$: canonical = SITE_URL + $page.url.pathname;
+	$: postImage =
+		json.image ??
+		`https://typeshare-opengraphs-three.vercel.app/${encodeURI(
+			json.title
+		)}.png?theme=light&type=post&date=${encodeURI(
+			new Date(json.date).toLocaleDateString('en-US', {
+				day: 'numeric',
+				month: 'short',
+				year: 'numeric'
+			})
+		)}&name=${encodeURI('Fabio Rosato')}&handle=${encodeURI(MY_TWITTER_HANDLE)}&bio=${encodeURI(
+			json.subtitle ?? json.description
+		)}&images=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1443710468426768385%2FVFjYjDGu.jpg`;
 </script>
 
 <svelte:head>
@@ -59,10 +72,8 @@
 	<meta name="twitter:creator" content={'@' + MY_TWITTER_HANDLE} />
 	<meta name="twitter:title" content={json.title + (json.subtitle ? ': ' + json.subtitle : '')} />
 	<meta name="twitter:description" content={json.description} />
-	{#if json.image}
-		<meta property="og:image" content={json.image} />
-		<meta name="twitter:image" content={json.image} />
-	{/if}
+	{@html `<meta property="og:image" content="${postImage}" />`}
+	{@html `<meta name="twitter:image" content="${postImage}" />`}
 </svelte:head>
 
 <article
