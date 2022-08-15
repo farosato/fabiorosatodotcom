@@ -178,7 +178,7 @@ function parseIssue(issue) {
 	} else {
 		slug = slugify(title);
 	}
-	let description = data.description ?? content.trim().split('\n')[0];
+	let description = data.subtitle ?? data.description ?? content.trim().split('\n')[0];
 	// you may wish to use a truncation approach like this instead...
 	// let description = (data.content.length > 300) ? data.content.slice(0, 300) + '...' : data.content
 

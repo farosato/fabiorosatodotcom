@@ -64,12 +64,12 @@
 	<link rel="canonical" href={canonical} />
 	<meta property="og:url" content={canonical} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={json.title + (json.subtitle ? ': ' + json.subtitle : '')} />
+	<meta property="og:title" content={json.title} />
 	<meta name="Description" content={json.description} />
 	<meta property="og:description" content={json.description} />
 	<meta name="twitter:card" content={'summary_large_image'} />
 	<meta name="twitter:creator" content={'@' + MY_TWITTER_HANDLE} />
-	<meta name="twitter:title" content={json.title + (json.subtitle ? ': ' + json.subtitle : '')} />
+	<meta name="twitter:title" content={json.title} />
 	<meta name="twitter:description" content={json.description} />
 	{@html `<meta property="og:image" content="${postImage}" />`}
 	{@html `<meta name="twitter:image" content="${postImage}" />`}
