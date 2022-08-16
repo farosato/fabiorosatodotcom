@@ -71,17 +71,17 @@
 			Featured Posts
 		</h3>
 		<div class="flex flex-col gap-6 md:flex-row">
-			<FeatureCard title="Hello, World!" href="/hello-world" stringData="Aug 2022" />
 			<FeatureCard
-				title="Digital Garden Terms of Service"
-				href="/digital-garden-tos"
+				title="How to Finally Find the Time to Do That Thing You Always Wanted"
+				href="/make-the-time"
 				stringData="Aug 2022"
 			/>
 			<FeatureCard
-				title="It's Always Day 1: Why I'm Starting the Ship 30 Challenge"
-				href="/ship30-day1"
+				title="Rambling Your Way to Clarity"
+				href="/rambling-to-clarity"
 				stringData="Aug 2022"
 			/>
+			<FeatureCard title="Get Motivated" href="/get-motivated" stringData="Aug 2022" />
 		</div>
 		<a
 			class="mt-8 flex h-6 rounded-lg leading-7 text-gray-600 transition-all dark:text-gray-400 dark:hover:text-gray-200"
