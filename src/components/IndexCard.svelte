@@ -28,7 +28,7 @@
 				<p class="mb-2 w-32 text-left text-gray-500 md:mb-0 md:text-right">{stringData}</p>
 			</div>
 		</div>
-		<p class="overflow-hidden text-ellipsis break-all text-base text-gray-600 dark:text-gray-400">
+		<p class="overflow-hidden text-ellipsis text-base text-gray-600 dark:text-gray-400">
 			<slot />
 		</p>
 	</div></a
