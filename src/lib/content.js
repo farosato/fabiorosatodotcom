@@ -93,14 +93,14 @@ export async function getContent(slug) {
 	const blogpost = allBlogposts.find((post) => post.slug === slug);
 	if (blogpost) {
 		const blogbody = blogpost.content
-			.replace(/\n{% youtube (.*?) %}/g, (_, x) => {
+			.replace(/\n((?:https?\:\/\/)?(?:www.)?(?:youtu\.be|youtube.com\/watch).*)/g, (_, x) => {
 				// https://stackoverflow.com/a/27728417/1106414
-				function youtube_parser(url) {
+				function getYouTubeVideoIdFromUrl(url) {
 					var rx =
 						/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
 					return url.match(rx)[1];
 				}
-				const videoId = x.startsWith('https://') ? youtube_parser(x) : x;
+				const videoId = x.startsWith('https://') ? getYouTubeVideoIdFromUrl(x) : x;
 				return `<iframe
 			class="w-full object-contain"
 			srcdoc="
