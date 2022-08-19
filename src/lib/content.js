@@ -9,6 +9,7 @@ import slugify from 'slugify';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutoLink from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
 
 const remarkPlugins = undefined;
 const rehypePlugins = [
@@ -19,6 +20,13 @@ const rehypePlugins = [
 		{
 			behavior: 'wrap',
 			properties: { class: 'hover:text-yellow-100 no-underline' }
+		}
+	],
+	[
+		rehypeExternalLinks,
+		{
+			target: '_blank',
+			rel: ['nofollow', 'noopener', 'noreferrer']
 		}
 	]
 ];

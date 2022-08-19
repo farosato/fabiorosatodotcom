@@ -5,6 +5,7 @@ import remarkGithub from 'remark-github';
 import remarkAbbr from 'remark-abbr';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // mdsvex config
 const mdsvexConfig = {
@@ -29,6 +30,13 @@ const mdsvexConfig = {
 			{
 				behavior: 'wrap',
 				test: ['h2', 'h3', 'h4', 'h5', 'h6']
+			}
+		],
+		[
+			rehypeExternalLinks,
+			{
+				target: '_blank',
+				rel: ['nofollow', 'noopener', 'noreferrer']
 			}
 		]
 	]
